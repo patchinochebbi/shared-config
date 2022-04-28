@@ -1,0 +1,36 @@
+var message;
+try {
+
+    message = "PDF Generated successfully";
+
+    if (!json.isNull("templatePath")) {
+        var templatePath = companyhome.childByNamePath(json.get("templatePath"));
+        var map = new Object();
+        var myObj = JSON.parse(json.get("templateParams"));
+        for (x in myObj) {
+            map[x] = myObj[x];
+        }
+        logger.log(map);
+        logger.system.out(map['sequence']);
+
+        var list = ["Salmon1", "Pizza with Taleggio2"]
+
+        myObj['ahmad'] = list;
+        var destDir = userhome.childByNamePath(json.get("destDirectory"));
+
+        var result = userhome.processTemplate(templatePath, JSON.parse(json.get("templateParams")));
+        var doc1 = destDir.createFile(json.get("fileName"));
+
+        doc1.mimetype = 'text/html';
+        doc1.content = result;
+        var trans1 = doc1.transformDocument('application/pdf');
+        message = "Doc id is : " + trans1.id;
+        doc1.remove();
+    } else {
+        message = "templatePath not exist";
+    }
+    model.message = message;
+} catch (err) {
+    model.message = "should go to alfresco log" + err;
+    logger.log(err);
+}

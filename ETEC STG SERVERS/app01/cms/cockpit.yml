@@ -1,0 +1,25 @@
+version: '3'
+services:
+  cockpit:
+    image: agentejo/cockpit
+    container_name: orchestracockpit
+    ports:
+      - 8083:80
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+        reservations:
+          cpus: '0.3'
+          memory: 1024M
+    networks:
+      - orchestra_default
+
+volumes:
+  cockpit-volume:
+
+networks:
+  orchestra_default:
+    external: true
+

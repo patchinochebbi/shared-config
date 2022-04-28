@@ -1,0 +1,9 @@
+CMIS_URL: http://10.1.201.17:8080/alfresco/cmisatom
+CMIS_ADMIN_USER_NAME: admin
+CMIS_ADMIN_PASSWORD: admin
+CMIS_BINDING: atompub
+CMIS_AUTHENTICATION_TYPE: Standard
+CMIS_SERVICE_URL: http://10.1.201.17:8080/alfresco/s
+
+
+

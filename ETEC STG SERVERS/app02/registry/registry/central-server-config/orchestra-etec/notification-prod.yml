@@ -1,0 +1,66 @@
+keycloak-url: http://10.1.201.17:9080
+
+keycloak:
+    issuer-url: ${keycloak-url}/auth/realms/etec/
+    SERVER_URL: ${keycloak-url}/auth
+    REALM: etec
+    CLIENT_ID: admin-cli
+    USER_NAME: admin
+    PASSWORD: ETEC@2030
+etec:
+    sms:
+        url: http://basic.unifonic.com/wrapper/sendSMS.php
+        appsid: Gug3mS6w9sNO7iPJnnODrmeRmNU4kz
+        sender: ETEC
+        baseEncode: False
+        encoding: GSM7
+
+schemaname: notification
+
+security:
+    oauth2:
+        client:
+            access-token-uri: ${keycloak-url}/auth/realms/etec/protocol/openid-connect/token
+            user-authorization-uri: ${keycloak-url}/auth/realms/etec/protocol/openid-connect/auth
+            client-id: notification-service
+            client-secret: etec@2030-orchestra
+            scope: openid profile email
+        resource:
+            user-info-uri: ${keycloak-url}/auth/realms/etec/protocol/openid-connect/userinfo
+
+spring:
+    liquibase:
+        enabled: false
+    mail:
+        username: stg-no-reply@medad.com
+        password: Nac96174
+    cloud:
+        stream:            
+            bindings:
+                systemRequestSubscribable:
+                    consumer:
+                        concurrency: 50
+                systemContentTopicSubscribable:
+                    consumer:
+                        concurrency: 50
+                systemFailureTopicSubscribable:
+                    consumer:
+                        concurrency: 50
+                systemErrorTopicSubscribable:
+                    consumer:
+                        concurrency: 50
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.15
+        non-secure-port: 8085
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+
+
+management:
+    health:
+        mail:
+            enabled: false

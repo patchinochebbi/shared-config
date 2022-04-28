@@ -1,0 +1,94 @@
+security:
+    oauth2:
+        client:            
+            client-id: data-service
+
+schemaname: datamanagement
+keycloak-config:
+    url: http://10.1.201.17:9080/
+    realm: etec
+    clientId: gateway-service
+    clientSecret: etec@2030-orchestra
+external:
+    uploadToAlfresco: true
+    formio: http://10.1.201.15:8084/ksuqnygnhgztelf/
+spring:
+    liquibase:
+      enabled: false
+    jackson:
+      serialization:
+        FAIL_ON_EMPTY_BEANS : false
+    cloud:
+        stream:
+            bindings:
+                taskChannel:
+                    destination: tasks
+                    content-type: application/json
+                    maxAttempts: 1
+                branchesMappingChannel:
+                    destination: branchesMapping
+                    content-type: application/json
+                branchesMappingConsumerChannel:
+                    destination: branchesMapping
+                    content-type: application/json
+                facilityMappingChannel:
+                    destination: facilityMapping
+                    content-type: application/json
+                facilityMappingConsumerChannel:
+                    destination: facilityMapping
+                    content-type: application/json
+                contractMappingChannel:
+                    destination: contractMapping
+                    content-type: application/json
+                contractMappingConsumerChannel:
+                    destination: contractMapping
+                    content-type: application/json
+                output:
+                    destination: topic-jhipster
+
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.16
+        non-secure-port: 8084
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+hystrix:
+    metrics:
+        enabled: false
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 500000
+
+## Front-office Task
+# updateTask path (GET)
+task.getUrlPath1: /IndividualLicenseRequest/{caseId}/IndividualLicenseRequestPracticalPractices
+task.getUrlPath2: /schoolAccreditation/{caseId}/schoolAccreditationupdatetask
+task.getUrlPath3: /schoolAccreditation/{caseId}/schoolAccreditationpaymentfees
+task.getUrlPath4: /trainingAccreditation/{caseId}/trainingAccreditationupdatetask
+task.getUrlPath5: /trainingAccreditation/{caseId}/trainingAccreditationpaymentfees
+task.getUrlPath6: /academicApproval/{caseId}/academicApprovalupdateTask
+task.getUrlPath7: /academicApproval/{caseId}/academicApprovalpaymentFees
+task.getUrlPath8: /IndividualLicenseRequest/{caseId}/IndividualLicenseRequestPaymentFees
+task.getUrlPath9: /IndividualLicenseRequest/{caseId}/IndividualLicenseRequestupdatetask
+task.getUrlPath10: /TrainingAccreditationRequest-1/{caseId}/trainingAccreditationupdatetask
+task.getUrlPath11: /TrainingAccreditationRequest-1/{caseId}/trainingAccreditationpaymentfees
+
+
+# updateTask path (POST)
+task.postUrlPath1: /IndividualLicenseRequest/{caseId}/IndividualLicenseRequestPracticalPractices/updateTask
+task.postUrlPath2: /schoolAccreditation/{caseId}/schoolAccreditationupdatetask/updateTask
+task.postUrlPath3: /schoolAccreditation/{caseId}/schoolAccreditationpaymentfees/updateTask
+task.postUrlPath4: /trainingAccreditation/{caseId}/trainingAccreditationupdatetask/updateTask
+task.postUrlPath5: /trainingAccreditation/{caseId}/trainingAccreditationpaymentfees/updateTask
+task.postUrlPath6: /academicApproval/{caseId}/academicApprovalupdateTask/updateTask
+task.postUrlPath7: /academicApproval/{caseId}/academicApprovalpaymentFees/updateTask
+task.postUrlPath8: /IndividualLicenseRequest/{caseId}/IndividualLicenseRequestPaymentFees/updateTask
+task.postUrlPath9: /IndividualLicenseRequest/{caseId}/IndividualLicenseRequestupdatetask/updateTask
+task.postUrlPath10: /TrainingAccreditationRequest-1/{caseId}/trainingAccreditationupdatetask/updateTask
+task.postUrlPath11: /TrainingAccreditationRequest-1/{caseId}/trainingAccreditationpaymentfees/updateTask

@@ -1,0 +1,8 @@
+<webscript> 
+    <shortname>Sending Custom Email</shortname>
+    <description>Sending Custom Email</description>
+    <url>/edigitpath/sendCustomEmail</url>
+    <format default="json">argument</format>
+    <authentication>user</authentication>
+    <transaction>required</transaction>
+</webscript>

@@ -1,0 +1,32 @@
+security:
+    oauth2:
+        client:
+            client-id: gateway-service         
+zuul:
+    OAuth2TokenRelayFilter:
+        pre:
+            disable: true
+    ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+
+hystrix:
+    metrics:
+        enabled: false
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 500000
+schemaname: gateway
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.16
+        non-secure-port: 80
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+ribbon:
+   ReadTimeout: 60000
+   connection-timeout: 3000

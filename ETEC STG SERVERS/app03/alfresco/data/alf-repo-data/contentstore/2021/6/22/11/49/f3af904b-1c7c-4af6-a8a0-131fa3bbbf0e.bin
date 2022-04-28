@@ -1,0 +1,8 @@
+<webscript> 
+    <shortname>Generate custom PDF</shortname>
+    <description>Generate custom PDF</description>
+    <url>/edigitpath/generateCustomPDF</url>
+    <format default="json">argument</format>
+    <authentication>user</authentication>
+    <transaction>required</transaction>
+</webscript>

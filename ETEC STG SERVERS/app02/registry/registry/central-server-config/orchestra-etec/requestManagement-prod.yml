@@ -1,0 +1,86 @@
+security:
+    user:
+        password: ETEC@2030
+    oauth2:
+        client:
+            client-id: request-service
+
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.15
+        non-secure-port: 8080
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+
+schemaname: requestmanagement
+
+application:
+    formio:
+        url: http://10.1.201.15:8084/ksuqnygnhgztelf/
+
+spring:
+    liquibase:
+        enabled: false
+    cloud:
+        stream:
+            kafka:                
+                bindings:
+                    requestChannel.producer.sync: true
+                    externalRequestChannel.producer.sync: true
+                    taskEditChannel.producer.sync: true
+            bindings:
+                output:
+                    destination: topic-jhipster
+                caseChannel:
+                    destination: cases
+                    content-type: application/json
+                    maxAttempts: 1
+                requestChannel:
+                    destination: requests
+                    content-type: application/json
+                    maxAttempts: 1
+                updateRequestChannel:
+                    destination: updaterequests
+                    content-type: application/json
+                    maxAttempts: 1
+                changeRequesterChannel:
+                    destination: changeRequester
+                    content-type: application/json
+                    maxAttempts: 1
+                linkRequestChannel:
+                    destination: linkRequest
+                    content-type: application/json
+                    maxAttempts: 1
+                updateExecVarChannel:
+                    destination: updateExecVar
+                    content-type: application/json
+                    maxAttempts: 1
+                remoteRequestChannel:
+                    destination: remoteRequest
+                    content-type: application/json
+                    maxAttempts: 1
+                requestResultChannel:
+                    destination: requestResult
+                    content-type: application/json
+                    maxAttempts: 1
+                externalRequestChannel:
+                    destination: externalRequests
+                    content-type: application/json
+                    maxAttempts: 1
+                taskEditChannel:
+                    destination: taskEdit
+                    content-type: application/json
+                msgEditChannel:
+                    destination: msgEdit
+                    content-type: application/json
+                taskEditNoMsgChannel:
+                    destination: taskEditNoMsg
+                    content-type: application/json
+                updateStatusChannel:
+                    destination: updateStatus
+                    content-type: application/json
+
+system-admin: ROLE_ADMIN

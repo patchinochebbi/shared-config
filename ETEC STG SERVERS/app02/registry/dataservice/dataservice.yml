@@ -1,0 +1,22 @@
+version: '2.4'
+services:
+  dataservice-app:
+    image: ec2-204-236-204-108.compute-1.amazonaws.com:8085/dataservice:etec
+    container_name: dataservice
+    ports:
+      - 8084:8084
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - spring.datasource.url=jdbc:mysql://$${datasource.server}:$${datasource.port}/$${schemaname}?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@10.1.201.16:8761/config
+      - server.port=8084
+    networks:
+      - orchestra_default
+
+networks:
+  orchestra_default:
+    external: true
+
+volumes:
+  data-volume:

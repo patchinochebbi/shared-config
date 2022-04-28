@@ -1,0 +1,21 @@
+{
+    "gateway": "http://10.0.8.115:80",
+    "cms": "http://10.0.8.114:8083",
+    "keycloak": {
+      "url": "http://10.0.8.125:9080/auth/",
+      "realm": "etec",
+      "clientId": "bo-web"
+    },
+    "formio": {
+      "apiUrl": "http://10.0.8.114:8084/formio/",
+      "appUrl": "http://10.0.8.114:8084/ksuqnygnhgztelf/",
+      "anonymousId": "60cd003fe7cefd1d92a5648f",
+      "resourceKey": "taskResource",
+      "resourceForm": "60cd003fe7cefd0fe1a5649b"
+    },
+    "formioLogin": {
+      "email": "admin@example.com",
+      "password": "AAdmin@forms"
+    }
+  }
+

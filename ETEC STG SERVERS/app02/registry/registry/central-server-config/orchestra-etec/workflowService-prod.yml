@@ -1,0 +1,16 @@
+security:
+    oauth2:
+        client:
+            client-id: workflow-service
+
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.16
+        non-secure-port: 8081
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+
+schemaname: workflowservice

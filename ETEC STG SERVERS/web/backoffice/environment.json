@@ -1,0 +1,24 @@
+{
+  "gateway": "http://10.1.201.16:80",
+  "cms": "http://10.1.201.15:8083",
+  "keycloak": {
+    "url": "http://10.1.201.17:9080/auth/",
+    "realm": "etec",
+    "clientId": "bo-web"
+  },
+  "appConfig": {
+    "endpoint": "/api/collections/get/AppConfig1/",
+    "id": "60ea922f666434041a0003ac",
+    "backOfficeSettings": "api/singletons/get/backOfficeSettings",
+    "formioEndpoint": "/api/collections/get/formioConfig/",
+    "formioId": "612bc06a5d4cda7713720b52",
+    "formioSettings": "api/singletons/get/formioSettings"
+  },
+  "formio": {
+    "apiUrl": "http://api.10.1.201.15:8084/",
+    "appUrl": "http://10.1.201.15:8084/ksuqnygnhgztelf/",
+    "resourceModal":false
+  },
+  "createCase": true
+}
+

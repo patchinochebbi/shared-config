@@ -1,0 +1,23 @@
+version: '2.4'
+
+services:
+  s3:
+    image: minio/minio
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - ./storage/minio:/data
+    environment:
+      MINIO_ROOT_USER: minio_admin
+      MINIO_ROOT_PASSWORD: minio_admin
+    command: server --console-address :9001 /data
+    networks:
+      - orchestra_default
+
+networks:
+  orchestra_default:
+    external: true
+
+volumes:
+  minio-volume:

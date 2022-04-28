@@ -1,0 +1,22 @@
+version: '2.4'
+services:
+  orchestraservice-app:
+    image: ec2-204-236-204-108.compute-1.amazonaws.com:8085/orchestraservice:etec
+    container_name: orchestra
+    ports:
+      - 8083:8083
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@10.1.201.16:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:mysql://$${datasource.server}:$${datasource.port}/$${schemaname}?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - server.port=8083
+    networks:
+      - orchestra_default
+
+volumes:
+  orchestra-volume:
+
+networks:
+  orchestra_default:
+    external: true

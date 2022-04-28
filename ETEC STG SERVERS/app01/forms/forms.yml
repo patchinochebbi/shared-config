@@ -1,0 +1,39 @@
+version: "2.1"
+services:
+  formio-redis:
+    image: redis
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - orchestra_default
+  
+  formio:
+    image: formio/formio-enterprise:6.7.8
+    restart: unless-stopped
+    ports:
+      - "8084:80"
+    links:
+      - formio-redis  
+    environment:
+      - "MONGO=mongodb://etec:Etec4770477@10.1.201.19:27017/etec_formio?readPreference=primary"
+      - "ADMIN_ADMIN_EMAIL=admin@etec.gov.sa"
+      - "ADMIN_PASS=AAdmin@forms"
+      - "PRIMARY=true"
+      - "LICENSE=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55IjoiU3RhZ2luZyIsInNlcnZlcnMiOnsiYXBpIjoiMyIsInBkZiI6IjEifSwicG9ydGFsIjp0cnVlLCJub0xvZyI6ZmFsc2UsImludGVybmFsIjpmYWxzZSwiX2lkIjoiNWQ1NzIwYzE0YTQwNjRlMDU2YmNhN2MxIiwiaWF0IjoxNTY1OTkxMTQ2fQ.XKgj4WYZsRo1lijFbiILVRHjana_8FlTbRZOLil-Opw"
+      - "PORTAL_SECRET=UOMXYwKnmQ8GUSM"
+      - "JWT_SECRET=qwertyuiopasdfghjklzxcvbnm123456"
+      - "DB_SECRET=KL0cDnj4xoBPlWE"
+      - "REDIS_ADDR=redis"
+      - "REDIS_PORT=6379"
+
+    networks:
+      - orchestra_default
+
+volumes:
+  formio-volume:
+
+networks:
+  orchestra_default:
+    external: true

@@ -1,0 +1,19 @@
+# custom config
+i18n : en
+languages:
+  en: English
+  ar: Arabic
+
+database:    
+    server: mongodb://etec:Etec4770477@10.1.201.19:27017/etec_cockpit
+    options:
+      db: etec_cockpit
+
+detektivo:
+    engine: algolia
+    app_id: OW2KHDDYEB
+    api_key: 6079bc216352f170afa4944ae2f6f1ce
+    collections:
+      Service: [serviceName_ar, serviceName_en]
+
+debug: true

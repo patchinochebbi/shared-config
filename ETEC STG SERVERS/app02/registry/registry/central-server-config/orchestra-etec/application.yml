@@ -1,0 +1,62 @@
+# Common configuration shared between all applications
+configserver:
+    name: Docker JHipster Registry
+    status: Connected to the JHipster Registry running in Docker
+
+keycloak-url: http://10.1.201.17:9080/auth/realms/etec/
+security:
+    oauth2:
+        client:
+            access-token-uri: ${keycloak-url}protocol/openid-connect/token
+            user-authorization-uri: ${keycloak-url}protocol/openid-connect/auth
+            scope: openid profile email
+            client-secret: etec@2030-orchestra
+        resource:
+            user-info-uri: ${keycloak-url}protocol/openid-connect/userinfo
+jhipster:
+    security:
+        authentication:
+            jwt:
+                secret: my-secret-key-which-should-be-changed-in-production-and-be-base64-encoded
+    cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+        allowed-headers: "*"
+        exposed-headers: "Authorization,Link,X-Total-Count"
+        allow-credentials: true
+        max-age: 1800
+
+
+
+           
+spring:
+    liquibase:
+        enabled: false
+    datasource:
+        username: etecdb
+        password: Etec@2030
+    cloud:
+        config:
+            fail-fast: false
+        stream:
+            kafka:
+                binder:
+                    brokers: 10.1.201.17
+                    zk-nodes: 10.1.201.17
+                    configuration.max.request.size: 2017767
+feign:
+   client:
+       config:
+           default:
+               connectTimeout: 50000
+               readTimeout: 50000
+               loggerLevel: full
+
+datasource:
+    server: 10.1.201.19
+    port: 3306
+
+orchestra:
+    license:
+        key: DBUNC-BWAIW-LRVBT-GWMIS
+        license-file: ActivationFile.skm

@@ -1,0 +1,15 @@
+security:
+    oauth2:
+        client:
+            client-id: orchestra-service
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.16
+        non-secure-port: 8083
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+
+schemaname: orchestraservice

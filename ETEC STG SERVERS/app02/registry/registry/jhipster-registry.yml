@@ -1,0 +1,34 @@
+version: '3'
+services:
+  jhipster-registry:
+    image: jhipster/jhipster-registry:v4.1.1
+    container_name: jhipster-registry
+    volumes:
+      - ./central-server-config:/central-config    
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger,oauth2
+      #- SPRING_SECURITY_USER_PASSWORD=admin
+      - JHIPSTER_REGISTRY_PASSWORD=ETEC@2030
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:./central-config/orchestra-etec/
+      - SECURITY_OAUTH2_CLIENT_ACCESS_TOKEN_URI=http://10.1.201.17:9080/auth/realms/etec/protocol/openid-connect/token
+      - SECURITY_OAUTH2_CLIENT_USER_AUTHORIZATION_URI=http://10.1.201.17:9080/auth/realms/etec/protocol/openid-connect/auth
+      - SECURITY_OAUTH2_RESOURCE_USER_INFO_URI=http://10.1.201.17:9080/auth/realms/etec/protocol/openid-connect/userinfo
+      - SECURITY_OAUTH2_CLIENT_CLIENT_ID=registry
+      - SECURITY_OAUTH2_CLIENT_CLIENT_SECRET=registry      
+      
+    ports:
+      - 8761:8761
+
+    networks:
+      - orchestra_default
+
+volumes:
+  registry-volume:
+
+networks:
+  orchestra_default:
+    external: true
+
+

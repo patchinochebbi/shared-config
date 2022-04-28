@@ -1,0 +1,32 @@
+keycloak-url: http://10.1.201.17:9080/auth/realms/etec/
+
+security:
+    oauth2:
+        client:
+            access-token-uri: ${keycloak-url}protocol/openid-connect/token
+            user-authorization-uri: ${keycloak-url}protocol/openid-connect/auth
+            client-id: case-service
+            client-secret: etec@2030-orchestra
+            scope: openid profile email
+        resource:
+            user-info-uri: ${keycloak-url}protocol/openid-connect/userinfo
+keycloak:
+    realm: etec
+    auth-server-url: http://10.1.201.17:9080/auth
+    ssl-required: none
+    resource: case-service
+    public-client: false
+    credentials:
+        secret: etec@2030-orchestra
+
+eureka:
+   instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.16
+        non-secure-port: 8082
+   client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/
+    
+schemaname: caseservice

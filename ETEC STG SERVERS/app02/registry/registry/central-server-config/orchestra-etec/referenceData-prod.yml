@@ -1,0 +1,25 @@
+cronExpression : "0 0 12 * * ?"
+# every 2 minute    : "0 0/2 * * * ?"
+# every 1 hour      : "0 0 * ? * *"
+# Every day at 12pm : "0 0 12 * * ?"
+
+cockpit:
+    url: http://orchestracockpit/api/collections/save/
+    key: Bearer b2b80c3849bf1ded3e0737d6480660
+
+schemaname: referenceData
+
+security:
+    oauth2:
+        client:            
+            client-id: reference-data-service
+
+eureka:
+    instance:
+        prefer-ip-address: false
+        hostname: 10.1.201.15
+        non-secure-port: 8081
+    client:
+        enabled: true
+        service-url:
+            defaultZone: http://admin:${jhipster.registry.password}@10.1.201.16:8761/eureka/

@@ -1,0 +1,10 @@
+{
+    "realm": "etec",
+    "auth-server-url": "http://10.1.201.17:9080/auth",
+    "ssl-required": "none",
+    "resource": "case-service",
+    "public-client": false,
+    "credentials": {
+        "secret": "etec@2030-orchestra"
+    }
+}

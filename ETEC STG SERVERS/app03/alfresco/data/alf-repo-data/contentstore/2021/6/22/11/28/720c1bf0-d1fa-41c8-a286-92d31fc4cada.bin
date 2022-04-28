@@ -1,0 +1,22 @@
+#
+# Alfresco version information
+#
+
+# Version label
+
+version.major=6
+version.minor=2
+version.revision=0
+version.label=
+
+# Edition label
+
+version.edition=Community
+
+# SCM Revision number
+
+version.scmrevision=git@github.com:Alfresco/acs-community-packaging.git-r38c1b263
+
+# Build number
+
+version.build=r38c1b263-b344

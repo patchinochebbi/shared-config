@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backoffice-app:
+    image: ec2-204-236-204-108.compute-1.amazonaws.com:8085/back-office:etec
+    container_name: back-office
+    ports:
+      - "82:80"
+      - "8443:443"    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+        reservations:
+          cpus: '0.3'
+          memory: 1024M
+    networks:
+      - orchestra_default
+
+networks:
+  orchestra_default:
+    external: true
+
+volumes:
+  backoffice-volume:
